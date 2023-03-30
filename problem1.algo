@@ -1,0 +1,26 @@
+ALGORITHM sum_of_distinct_elements
+VAR
+    tab1: ARRAY_OF INTEGER[4];//set1 of elements
+    tab2: ARRAY_OF INTEGER[5];//set2 of elements
+    i,j:INTEGER:=0;
+    sum:INTEGER:=0;//sum of all distinct elements from the set
+BEGIN
+    FOR i FROM 0 TO tab1.lengh-1 STEP 1 DO
+        FOR j FROM 0 TO tab2.lengh-1 STEP 1  DO
+            IF (tab1[i]=tab2[j]) THEN
+                sum:=sum;
+            ELSE
+                sum:=sum+tab2[j];           
+            END_IF   
+        END_FOR
+    END_FOR
+    
+    FOR j FROM 0 TO tab2.lengh-1 STEP 1 DO
+        FOR i FROM 0 TO tab1.lengh-1 STEP 1  DO
+            IF (tab2[j]=tab1[i]) THEN
+                sum:=sum;
+            ELSE
+                sum:=sum+tab1[i];           
+            END_IF   
+        END_FOR
+    END_FOR
