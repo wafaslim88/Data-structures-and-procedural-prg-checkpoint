@@ -1,0 +1,61 @@
+FUNCTION is_separator(d:CHAR) : BOOLEAN
+VAR
+    e: BOOLEAN
+BEGIN
+    IF (d=' ') THEN
+        e:= TRUE;
+        ELSE
+        e:= FALSE;
+    END_IF
+    RETURN e ;
+END
+
+FUNCTION is_letter(d:CHAR) : BOOLEAN
+VAR
+    l: BOOLEAN
+BEGIN
+    IF (d>='a' AND d<='z' OR d>='A' AND d<='Z') THEN
+        l:= TRUE.
+        ELSE    
+        l:= FALSE.
+    END_IF
+    RETURN l;
+END    
+
+FUNCTION is_digit(d:CHAR) : BOOLEAN
+VAR
+    k: BOOLEAN
+BEGIN
+    IF (d>=0 AND d<=9) THEN
+        k:= TRUE;
+        ELSE
+        k:= FALSE;
+    END_IF
+    RETURN k ;
+END
+
+ALGORITHM read_sentence
+VAR
+    d:CHAR:='';
+    nb_let:INTEGER:=0; // the number of letters in the sentence
+    nb_dig:INTEGER:=0;// the number of digits in the sentence
+    nb_sep:INTEGER:=0;// the number of separators in the sentence
+    nb_s:INTEGER:=0; // the number of the other special characters in the sentence  
+BEGIN
+    WHILE (d <> '#') DO
+        Read(d);
+        IF (is_separator:= FALSE AND is_letter:= FALSE AND is_digit:= FALSE) THEN
+           nb_s:=nb_s+1;
+        END_IF
+        IF (is_letter:= TRUE) THEN
+            nb_let:= nb_let+1;
+        END_IF 
+        IF (is_digit:= TRUE) THEN
+            nb_dig:= nb_dig+1;
+        END_IF 
+        IF (is_separator:= TRUE) THEN
+            nb_sep:=nb_sep+1;
+        END_IF
+    END_WHILE
+
+END

@@ -1,0 +1,38 @@
+FUNCTION ANAGRAM(wrd1,wrd2: ARRAY_OF STRING) : BOOLEAN
+VAR
+    i,j: INTEGER:=0;
+    k:BOOLEAN:= FALSE; 
+    s:INTEGER:=0;//numbre of similar characters in word1 and word2
+BEGIN
+    //Compare string length for both strings
+    IF (wrd1.lengh <> wrd2.lengh) THEN
+        write("words are not ANAGRAMS");
+        k:=FALSE;
+    END_IF
+    // compare every letter in word1 widh letters in word2
+    FOR i FROM 0 TO wrd1.lengh-1 STEP 1  DO
+        FOR j FROM 0 TO wrd2.lengh-1 STEP 1  DO
+            IF (wrd1[i]=wrd2[j]) THEN
+                s:=s+1;
+            ELSE
+                s:=s;
+            END_IF
+            IF (s= word1.lengh) THEN
+                k:=true;
+            END_IF
+        END_FOR
+    END_FOR
+    RETURN k ;
+END
+
+PROCEDURE MIRROR(STR1,STR2 : ARRAY_OF STRING)
+VAR
+    i,j: INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO STR1.lengh-1 STEP 1  DO
+        FOR j FROM 0 TO STR2.lengh-1 STEP 1  DO
+            STR1[i]=STR2[lengh-1 - i];
+        END_FOR
+    END_FOR
+    write("STR2 is the mirror image of STR1");
+END
